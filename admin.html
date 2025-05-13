@@ -113,19 +113,17 @@
     &copy; 2025 Developed by Md. Naimur Rahman Jisan | State University of Bangladesh
   </div>
 
-<!-- ✅ PLACE THIS RIGHT BEFORE </body> -->
 <script>
   let config = {};
   let currentGroup = "nationalDepartments";
-  let currentDept = "";
 
   async function loadConfig() {
     try {
-      const res = await fetch("/config.json");
+      const res = await fetch("https://sub-version-check.onrender.com/config");
       config = await res.json();
       loadDepartments();
     } catch (err) {
-      alert("❌ Failed to load config. Is the server running?");
+      alert("❌ Failed to load config. Is the backend running?");
       console.error(err);
     }
   }
@@ -148,7 +146,6 @@
       deptSelect.appendChild(opt);
     }
 
-    // Select first by default
     if (deptSelect.options.length > 0) {
       deptSelect.selectedIndex = 0;
       fillForm();
@@ -157,7 +154,6 @@
 
   function fillForm() {
     const dept = document.getElementById("department").value;
-    currentDept = dept;
     const d = config[currentGroup]?.[dept];
     if (!d) return;
 
@@ -168,39 +164,37 @@
       });
   }
 
-async function save() {
-  const pw = document.getElementById("password").value;
-  if (!pw) return alert("🔐 Please enter the admin password.");
+  async function save() {
+    const pw = document.getElementById("password").value;
+    if (!pw) return alert("🔐 Please enter the admin password.");
 
-  const dept = document.getElementById("department").value;
-  const group = document.getElementById("groupType").value;
-  const d = config[group][dept];
+    const dept = document.getElementById("department").value;
+    const d = config[currentGroup][dept];
 
-  ["totalCredit", "costPerCredit", "flatWeiver", "semesters", "durationYears", "regPerSem", "devPerSem", "labPerSem"]
-    .forEach(id => {
-      d[id] = parseFloat(document.getElementById(id).value) || 0;
-    });
+    ["totalCredit", "costPerCredit", "flatWeiver", "semesters", "durationYears", "regPerSem", "devPerSem", "labPerSem"]
+      .forEach(id => {
+        d[id] = parseFloat(document.getElementById(id).value) || 0;
+      });
 
-  try {
-    const res = await fetch("/config.json", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password: pw, config })
-    });
+    try {
+      const res = await fetch("https://sub-version-check.onrender.com/config", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pw, config })
+      });
 
-    if (res.ok) {
-      alert("✅ Configuration saved successfully!");
-    } else {
-      alert("❌ Failed to save: " + await res.text());
+      if (res.ok) {
+        alert("✅ Configuration saved successfully!");
+      } else {
+        const text = await res.text();
+        alert("❌ Failed to save: " + text);
+      }
+    } catch (err) {
+      alert("❌ Error saving configuration.");
+      console.error(err);
     }
-  } catch (err) {
-    alert("❌ Error saving configuration.");
-    console.error(err);
   }
-}
 
-
-  // ✅ Now attach listeners AFTER DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("groupType").addEventListener("change", loadDepartments);
     document.getElementById("department").addEventListener("change", fillForm);

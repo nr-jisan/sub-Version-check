@@ -168,33 +168,37 @@
       });
   }
 
-  async function save() {
-    const pw = document.getElementById("password").value;
-    if (!pw) return alert("🔐 Please enter the admin password.");
-    const d = config[currentGroup][currentDept];
+async function save() {
+  const pw = document.getElementById("password").value;
+  if (!pw) return alert("🔐 Please enter the admin password.");
 
-    ["totalCredit", "costPerCredit", "flatWeiver", "semesters", "durationYears", "regPerSem", "devPerSem", "labPerSem"]
-      .forEach(id => {
-        d[id] = parseFloat(document.getElementById(id).value) || 0;
-      });
+  const dept = document.getElementById("department").value;
+  const group = document.getElementById("groupType").value;
+  const d = config[group][dept];
 
-    try {
-      const res = await fetch("/config.json", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: pw, config })
-      });
+  ["totalCredit", "costPerCredit", "flatWeiver", "semesters", "durationYears", "regPerSem", "devPerSem", "labPerSem"]
+    .forEach(id => {
+      d[id] = parseFloat(document.getElementById(id).value) || 0;
+    });
 
-      if (res.ok) {
-        alert("✅ Configuration saved successfully!");
-      } else {
-        alert("❌ Failed to save: " + await res.text());
-      }
-    } catch (err) {
-      alert("❌ Error saving configuration.");
-      console.error(err);
+  try {
+    const res = await fetch("/config.json", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: pw, config })
+    });
+
+    if (res.ok) {
+      alert("✅ Configuration saved successfully!");
+    } else {
+      alert("❌ Failed to save: " + await res.text());
     }
+  } catch (err) {
+    alert("❌ Error saving configuration.");
+    console.error(err);
   }
+}
+
 
   // ✅ Now attach listeners AFTER DOM is ready
   document.addEventListener("DOMContentLoaded", () => {

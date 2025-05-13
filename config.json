@@ -1,0 +1,116 @@
+{
+  "nationalDepartments": {
+    "architecture": {
+      "totalCredit": 190,
+      "costPerCredit": 3500,
+      "flatWeiver": 0.1,
+      "semesters": 12,
+      "durationYears": 5,
+      "regPerSem": 15000,
+      "devPerSem": 6000,
+      "labPerSem": 0
+    },
+    "bba": {
+      "totalCredit": 130,
+      "costPerCredit": 3250,
+      "flatWeiver": 0.2,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 0
+    },
+    "cse": {
+      "totalCredit": 140,
+      "costPerCredit": 3500,
+      "flatWeiver": 0.15,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 3500
+    },
+    "english": {
+      "totalCredit": 130,
+      "costPerCredit": 2750,
+      "flatWeiver": 0.15,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 0
+    },
+    "fens": {
+      "totalCredit": 145,
+      "costPerCredit": 2750,
+      "flatWeiver": 0.15,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 3500
+    },
+    "jcms": {
+      "totalCredit": 140,
+      "costPerCredit": 2500,
+      "flatWeiver": 0.25,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 3500
+    },
+    "law": {
+      "totalCredit": 140,
+      "costPerCredit": 3300,
+      "flatWeiver": 0,
+      "semesters": 8,
+      "durationYears": 4,
+      "regPerSem": 15000,
+      "devPerSem": 6000,
+      "labPerSem": 0
+    },
+    "pharmacy": {
+      "totalCredit": 164,
+      "costPerCredit": 4200,
+      "flatWeiver": 0,
+      "semesters": 8,
+      "durationYears": 4,
+      "regPerSem": 15000,
+      "devPerSem": 6000,
+      "labPerSem": 7000
+    }
+  },
+  "diplomaDepartments": {
+    "architecture": {
+      "totalCredit": 190,
+      "costPerCredit": 3500,
+      "flatWeiver": 0.1,
+      "semesters": 10,
+      "durationYears": 5,
+      "regPerSem": 15000,
+      "devPerSem": 6000,
+      "labPerSem": 0
+    },
+    "cse": {
+      "totalCredit": 140,
+      "costPerCredit": 3500,
+      "flatWeiver": 0.15,
+      "semesters": 12,
+      "durationYears": 4,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 3500
+    },
+    "fens": {
+      "totalCredit": 125,
+      "costPerCredit": 2750,
+      "flatWeiver": 0.15,
+      "semesters": 11,
+      "durationYears": 3.5,
+      "regPerSem": 10000,
+      "devPerSem": 4000,
+      "labPerSem": 3500
+    }
+  }
+}
